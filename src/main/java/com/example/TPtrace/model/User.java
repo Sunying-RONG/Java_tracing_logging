@@ -21,7 +21,10 @@ public class User {
 		inverseJoinColumns=@JoinColumn(name="product_id"))
 	private Set<Product> productList;
 	
-	
+	public User() {
+		super();
+	}
+
 	public User(String user_id, String name, int age, String email, String password) {
 		super();
 		this.user_id = user_id;

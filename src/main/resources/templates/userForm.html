@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <meta charset = "ISO-8859-1" />
+      <link href="css/styles.css" rel="stylesheet"/>
+      <!-- <script type="text/javascript" th:src="@{js/actions.js}"></script> -->
+      <title>Spring Boot Application</title>
+   </head>
+   <body>
+	  	<form id="myform" action="#" th:action="@{/createUser}" th:object="${user}" method="post">
+	  		<div>
+		  		<label for="user_id">User Id:</label>
+				<input type="text" th:name="user_id" th:field="${user.user_id}" placeholder="5 characters maximum"/> 
+	  		</div>
+	  		<div>
+	  			<label for="name">User Name:</label>
+	  			<input type="text" th:name="name" th:field="${user.name}" placeholder="16 characters maximum"/>
+	  		</div>
+			<div>
+				<label for="age">User Age:</label>
+				<input type="number" th:name="age" th:field="${user.age}" placeholder="digits"/>
+			</div>
+			<div>
+				<label for="email">User Email:</label>
+				<input type="email" th:name="email" th:field="${user.email}" placeholder="32 charactoers maximum"/>
+			</div>
+			<div>
+				<label for="password">User Password:</label>
+				<input type="password" th:name="password" th:field="${user.password}" placeholder="16 charactoers maximum"/>
+			</div>
+			
+			<input onclick="reset()" type="submit" value="Submit"/>
+		</form>
+		<br/>
+      	<button><a th:href="@{/index}">Return to Dashboard</a></button>
+      	<script>
+      		function reset() {
+      			document.getElementById("myForm").reset();
+      		}
+      	</script>
+   </body>
+</html>

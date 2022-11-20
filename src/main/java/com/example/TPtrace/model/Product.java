@@ -11,6 +11,11 @@ public class Product {
 	private float price;
 	private String expiration_date;
 	
+	public Product() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public Product(String product_id, String name, float price, String expiration_date) {
 		super();
 		this.product_id = product_id;

@@ -1,11 +1,14 @@
+SET FOREIGN_KEY_CHECKS = 0;
 drop table if exists User;
 drop table if exists Product;
+drop table if exists user_product;
+SET FOREIGN_KEY_CHECKS = 1;
 
 create table User (
     user_id varchar(5) primary key, 
     name varchar(16), 
     age integer, 
-    email varchar(16), 
+    email varchar(32), 
     password varchar(16)
 );
 
