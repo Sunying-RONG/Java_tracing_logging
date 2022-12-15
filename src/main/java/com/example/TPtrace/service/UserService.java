@@ -16,5 +16,4 @@ public abstract interface UserService {
 //	User updateUser(User user, String user_id);
 	// delete operation
 //	void deleteUserById(String user_id);
-
 }

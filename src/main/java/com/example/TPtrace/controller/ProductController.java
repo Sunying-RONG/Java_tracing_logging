@@ -22,10 +22,7 @@ public class ProductController {
 	
 //	@RequestMapping(value="/index")
 //	@ResponseBody
-	@GetMapping("/index")
-	public String index() {
-		return "index"; // name of html file without extension
-	}
+	
 	
 	@RequestMapping(value="/productList", method=RequestMethod.GET)
 	public List<Product> fetchProductList() {
