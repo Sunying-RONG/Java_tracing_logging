@@ -13,7 +13,7 @@ public abstract interface ProductService {
 	List<Product> fetchProductList();
 	Product fetchProductById(String product_id);
 	// update operation
-	Product updateProduct(Product product, String product_id) throws Exception;
+	Product updateProduct(Product product);
 	// delete operation
 	void deleteProductById(String product_id);
 }

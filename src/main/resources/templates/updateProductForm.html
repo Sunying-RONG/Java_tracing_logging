@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <meta charset = "ISO-8859-1" />
+      <link href="css/styles.css" rel="stylesheet"/>
+      <!-- <script type="text/javascript" th:src="@{js/actions.js}"></script> -->
+      <title>Spring Boot Application</title>
+   </head>
+   <body>
+	  	<form id="myform" action="#" th:action="@{/updateProduct}" th:object="${selectedProduct}" method="post">
+	  		<div>
+		  		<label for="product_id">Product Id: </label>
+				<input readonly type="text" th:name="product_id" th:field="${selectedProduct.product_id}" placeholder="5 characters maximum"/> 
+	  		</div>
+	  		<div>
+	  			<label for="name">Product Name:</label>
+	  			<input type="text" th:name="name" th:field="${selectedProduct.name}" placeholder="16 characters maximum"/>
+	  		</div>
+			<div>
+				<label for="price">Product price:</label>
+				<input type="number" th:name="price" th:field="${selectedProduct.price}" placeholder="digits"/>
+			</div>
+			<div>
+				<label for="expiration_date">Product Expiration Date:</label>
+				<input type="date" th:name="expiration_date" th:field="${selectedProduct.expiration_date}"/>
+			</div>
+			<input type="submit" value="Submit"/>
+		</form>
+   </body>
+</html>

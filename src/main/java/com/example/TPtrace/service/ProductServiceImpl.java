@@ -49,8 +49,8 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public Product updateProduct(Product product, String product_id) {
-		Optional<Product> oldProduct = productRepository.findById(product_id);
+	public Product updateProduct(Product product) {
+		Optional<Product> oldProduct = productRepository.findById(product.getProduct_id());
 	
 		if (oldProduct.isPresent()) {
 			return productRepository.save(product);

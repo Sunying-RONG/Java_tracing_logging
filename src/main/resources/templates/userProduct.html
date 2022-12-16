@@ -31,6 +31,11 @@
       		<li>Product price : <span th:text="${selectedProduct.price}"></span></li>
       		<li>Product expiration date : <span th:text="${selectedProduct.expiration_date}"></span></li>
       	</ul>
+      	<br/>
+      	<button> <a th:href="@{/deleteSelectedProduct/{id}(id=${selectedProduct.product_id})}">Delete this product</a></button>
+      	<br/>
+      	<br/>
+      	<button> <a th:href="@{/updateSelectedProduct/{id}(id=${selectedProduct.product_id})}">Update this product</a></button>
       </div>
    </body>
 </html>

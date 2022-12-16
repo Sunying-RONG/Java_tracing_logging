@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,7 +22,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.TPtrace.model.Product;
 import com.example.TPtrace.model.User;
 import com.example.TPtrace.service.ProductService;
-import com.example.TPtrace.service.UserService;
 
 //@RestController
 @Controller
@@ -28,8 +29,6 @@ public class ProductController {
 	
 	@Autowired
 	ProductService service;
-	@Autowired
-	UserService userService;
 
 //	@RequestMapping(value="/index")
 //	@ResponseBody
@@ -67,6 +66,27 @@ public class ProductController {
 		System.out.println("Selected product id: "+selectedProduct);
 		Product product = service.fetchProductById(selectedProduct);
 		model.addAttribute("selectedProduct", product);
+		return "userProduct";
+	}
+	
+	@GetMapping("/deleteSelectedProduct/{id}")
+	public String deleteSelectedProduct(@PathVariable("id") String id, HttpSession session) {
+		service.deleteProductById(id);
+		List<Product> products = service.fetchProductList();
+		session.setAttribute("products", products);
+		return "userProduct";
+	}
+	
+	@GetMapping("/updateSelectedProduct/{id}")
+	public String updateSelectedProduct(@PathVariable("id") String id, Model model) {
+		Product product = service.fetchProductById(id);
+		model.addAttribute("selectedProduct", product);
+		return "updateProductForm";
+	}
+	
+	@PostMapping("/updateProduct")
+	public String updateProduct(@ModelAttribute Product selectedProduct) {
+		service.updateProduct(selectedProduct);
 		return "userProduct";
 	}
 
