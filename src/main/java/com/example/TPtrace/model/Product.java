@@ -11,7 +11,7 @@ public class Product {
 	@Column
 	private String name;
 	private float price;
-	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private String expiration_date;
 	
 	public Product() {

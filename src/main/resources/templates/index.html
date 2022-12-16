@@ -9,7 +9,7 @@
       <h4>Dashboard</h4>
       <button> <a th:href="@{/goToUserForm}">Create a user</a></button>
       <h4>Choose a user as login user</h4>
-      <form role="form" th:action=@{/productPage} method="post">
+      <form role="form" th:action=@{/goToUserProductForm} method="post">
 	      <select name="selectedUser">
 	      	<option th:each="user : ${users}" th:value="${user.user_id}" th:text="${user.name}"></option>
 	      </select>

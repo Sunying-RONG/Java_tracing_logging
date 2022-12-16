@@ -20,12 +20,17 @@
       <div>Existing products : </div>
       <form role="form" th:action=@{/chooseProduct} method="post">
       	<select name="selectedProduct">
-	      	<option th:each="product : ${products}" th:value="${product.product_id}" th:text="${product.name}"></option>
+	      	<option th:each="product : ${session.products}" th:value="${product.product_id}" th:text="${product.name}"></option>
 	    </select>
       	<input type="submit" value="check product">
       </form>
       <div th:if="${selectedProduct != null}">
-      test
+      	<ul th:object="${selectedProduct}">
+      		<li>Product id : <span th:text="${selectedProduct.product_id}"></span></li>
+      		<li>Product name : <span th:text="${selectedProduct.name}"></span></li>
+      		<li>Product price : <span th:text="${selectedProduct.price}"></span></li>
+      		<li>Product expiration date : <span th:text="${selectedProduct.expiration_date}"></span></li>
+      	</ul>
       </div>
    </body>
 </html>

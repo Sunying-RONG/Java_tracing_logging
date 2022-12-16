@@ -40,13 +40,13 @@ public class ProductController {
 //		return service.fetchProductList();
 //	}
 	
-	@PostMapping("/productPage")
-	public String productPage(@RequestParam String selectedUser, HttpSession session, Model model) {
-		System.out.println("===="+selectedUser);
-		User user = userService.fetchUserById(selectedUser);
-		session.setAttribute("selectedUser", user);
+	@GetMapping("/productPage")
+	public String productPage(Model model, HttpSession session) {
+//		System.out.println("===="+selectedUser);
+//		User user = userService.fetchUserById(selectedUser);
+//		session.setAttribute("selectedUser", user);
 		List<Product> products = service.fetchProductList();
-		model.addAttribute("products", products);
+		session.setAttribute("products", products);
 		return "userProduct"; // name of html file without extension
 	}
 	
@@ -64,7 +64,7 @@ public class ProductController {
 	
 	@PostMapping("/chooseProduct")
 	public String chooseProduct(@RequestParam String selectedProduct, Model model) {
-		System.out.println("===="+selectedProduct);
+		System.out.println("Selected product id: "+selectedProduct);
 		Product product = service.fetchProductById(selectedProduct);
 		model.addAttribute("selectedProduct", product);
 		return "userProduct";

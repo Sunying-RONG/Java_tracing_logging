@@ -40,13 +40,13 @@ public class UserController {
 		return "userForm";
 	}
 	
-//	@PostMapping("/goToUserProductForm")
-//	public String toUserProduct(@RequestParam String selectedUser, HttpSession session) {
-//		System.out.println("===="+selectedUser);
-//		User user = service.fetchUserById(selectedUser);
-//		session.setAttribute("selectedUser", user);
-//		return "redirect:/productPage";
-//	}
+	@PostMapping("/goToUserProductForm")
+	public String toUserProduct(@RequestParam String selectedUser, HttpSession session) {
+		System.out.println("Selected user id: "+selectedUser);
+		User user = service.fetchUserById(selectedUser);
+		session.setAttribute("selectedUser", user);
+		return "redirect:/productPage";
+	}
 	
 	
 }
