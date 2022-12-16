@@ -7,10 +7,25 @@
    </head>
    <body>
       <h4>User's product</h4>
-      <tr th:object="${selectedUser}">
-      	<td>User id: <span th:text="${selectedUser.user_id}"></span></td>
-      	<td>, User name: <span th:text="${selectedUser.name}"></span></td>
-      	<td>, User email: <span th:text="${selectedUser.email}"></span></td>
+      <tr th:object="${session.selectedUser}">
+      	<td>User id: <span th:text="${session.selectedUser.user_id}"></span></td>
+      	<td>, User name: <span th:text="${session.selectedUser.name}"></span></td>
+      	<td>, User email: <span th:text="${session.selectedUser.email}"></span></td>
       </tr>
+      <br/>
+      <br/>
+      <button> <a th:href="@{/goToProductForm}">Add a new product</a></button>
+      <br/>
+      <br/>
+      <div>Existing products : </div>
+      <form role="form" th:action=@{/chooseProduct} method="post">
+      	<select name="selectedProduct">
+	      	<option th:each="product : ${products}" th:value="${product.product_id}" th:text="${product.name}"></option>
+	    </select>
+      	<input type="submit" value="check product">
+      </form>
+      <div th:if="${selectedProduct != null}">
+      test
+      </div>
    </body>
 </html>

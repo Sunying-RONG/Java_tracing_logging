@@ -2,6 +2,8 @@ package com.example.TPtrace.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,13 +40,13 @@ public class UserController {
 		return "userForm";
 	}
 	
-	@PostMapping("/goToUserProductForm")
-	public String toUserProduct(@RequestParam String selectedUser, Model model) {
-		System.out.println("===="+selectedUser);
-		User user = service.fetchUserById(selectedUser);
-		model.addAttribute("selectedUser", user);
-		return "userProduct";
-	}
+//	@PostMapping("/goToUserProductForm")
+//	public String toUserProduct(@RequestParam String selectedUser, HttpSession session) {
+//		System.out.println("===="+selectedUser);
+//		User user = service.fetchUserById(selectedUser);
+//		session.setAttribute("selectedUser", user);
+//		return "redirect:/productPage";
+//	}
 	
 	
 }

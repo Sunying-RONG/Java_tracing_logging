@@ -2,6 +2,8 @@ package com.example.TPtrace.model;
 
 import javax.persistence.*;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 public class Product {
 	@Id
@@ -9,6 +11,7 @@ public class Product {
 	@Column
 	private String name;
 	private float price;
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private String expiration_date;
 	
 	public Product() {

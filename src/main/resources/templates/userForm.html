@@ -29,14 +29,9 @@
 				<input type="password" th:name="password" th:field="${user.password}" placeholder="16 charactoers maximum"/>
 			</div>
 			
-			<input onclick="reset()" type="submit" value="Submit"/>
+			<input type="submit" value="Submit"/>
 		</form>
 		<br/>
       	<button><a th:href="@{/index}">Return to Dashboard</a></button>
-      	<script>
-      		function reset() {
-      			document.getElementById("myForm").reset();
-      		}
-      	</script>
    </body>
 </html>

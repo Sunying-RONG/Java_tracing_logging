@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
+
+import org.springframework.context.annotation.Scope;
 @Entity
 public class User {
 	@Id
@@ -14,12 +16,6 @@ public class User {
 	private int age;
 	private String email;
 	private String password;
-	
-	@ManyToMany
-	@JoinTable(name="user_product", 
-		joinColumns=@JoinColumn(name="user_id"),
-		inverseJoinColumns=@JoinColumn(name="product_id"))
-	private Set<Product> productList;
 	
 	public User() {
 		super();
@@ -32,14 +28,6 @@ public class User {
 		this.age = age;
 		this.email = email;
 		this.password = password;
-	}
-	
-	public Set<Product> getProductList() {
-		return productList;
-	}
-
-	public void setProductList(Set<Product> productList) {
-		this.productList = productList;
 	}
 
 	public String getUser_id() {
