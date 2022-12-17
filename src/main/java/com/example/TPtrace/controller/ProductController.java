@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.TPtrace.exception.ProductSameIdExist;
 import com.example.TPtrace.model.Product;
 import com.example.TPtrace.model.User;
 import com.example.TPtrace.service.ProductService;

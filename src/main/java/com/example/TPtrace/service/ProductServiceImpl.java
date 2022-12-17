@@ -23,7 +23,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public Product saveProduct(Product product) {
+	public Product saveProduct(Product product) throws ProductSameIdExist {
 		String id = product.getProduct_id();
 		for (Product p : fetchProductList()) {
 			if (p.getProduct_id().equals(id)) {
@@ -39,7 +39,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public Product fetchProductById(String product_id) {
+	public Product fetchProductById(String product_id) throws NoProductWithId {
 		Optional<Product> p = productRepository.findById(product_id);
 		if (p.isPresent()) {
 			return p.get();
@@ -49,7 +49,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public Product updateProduct(Product product) {
+	public Product updateProduct(Product product) throws NoProductWithId {
 		Optional<Product> oldProduct = productRepository.findById(product.getProduct_id());
 	
 		if (oldProduct.isPresent()) {
@@ -60,7 +60,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public void deleteProductById(String product_id) {
+	public void deleteProductById(String product_id) throws NoProductWithId {
 		Optional<Product> oldProduct = productRepository.findById(product_id);
 		if (oldProduct.isPresent()) {
 			productRepository.delete(oldProduct.get());

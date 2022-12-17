@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User saveUser(User user) {
+	public User saveUser(User user) throws UserSameIdExist {
 		String id = user.getUser_id();
 		for (User u : fetchUserList()) {
 			if (u.getUser_id().equals(id)) {
@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User fetchUserById(String user_id) {
+	public User fetchUserById(String user_id) throws NoUserWithId {
 		Optional<User> u = userRepository.findById(user_id);
 		if (u.isPresent()) {
 			return u.get();
