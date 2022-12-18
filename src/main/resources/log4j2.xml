@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<Appenders>
+		<File name="trace" filename="./application.log" immediateFlush="true" append="false">
+			<JsonLayout complete="true" compact="true" eventEol="true"  includeStacktrace="true" objectMessageAsJsonObject="true" >
+	            <KeyValuePair key="time" value="$${date:yyyy-MM-dd}" />
+	            <!-- <KeyValuePair key="service" value="subscription" /> -->
+	        </JsonLayout>
+        </File>
+        
+        <Console name="console" target="SYSTEM_OUT">
+            <JsonLayout complete="true" compact="true" eventEol="true"  includeStacktrace="true" objectMessageAsJsonObject="true" >
+                <KeyValuePair key="time" value="$${date:yyyy-MM-dd}" />
+                <!-- <KeyValuePair key="service" value="subscription" /> -->
+            </JsonLayout>
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <Root level="INFO">
+             <AppenderRef ref="console" level="info"/>
+             <AppenderRef ref="trace" level="info"/>
+        </Root>
+
+    </Loggers>
+	
+</Configuration>

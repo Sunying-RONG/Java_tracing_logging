@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -27,6 +29,7 @@ import com.example.TPtrace.service.ProductService;
 //@RestController
 @Controller
 public class ProductController {
+	private static Logger loggerWithJsonLayout = LogManager.getLogger(UserController.class.getName());
 	
 	@Autowired
 	ProductService service;
@@ -63,10 +66,11 @@ public class ProductController {
 	}
 	
 	@PostMapping("/chooseProduct")
-	public String chooseProduct(@RequestParam String selectedProduct, Model model) {
+	public String chooseProduct(@RequestParam String selectedProduct, Model model, HttpSession session) {
 		System.out.println("Selected product id: "+selectedProduct);
 		Product product = service.fetchProductById(selectedProduct);
 		model.addAttribute("selectedProduct", product);
+		loggerWithJsonLayout.info("Read action: "+session.getAttribute("selectedUser"));
 		return "userProduct";
 	}
 	

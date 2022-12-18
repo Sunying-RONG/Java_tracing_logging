@@ -72,7 +72,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "Product [user_id=" + user_id + ", name=" + name + ", age=" + age + ", email=" + email + ", password="
+		return "User [user_id=" + user_id + ", name=" + name + ", age=" + age + ", email=" + email + ", password="
 				+ password + "]";
 	}
 	

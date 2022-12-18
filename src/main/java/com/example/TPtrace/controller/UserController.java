@@ -15,8 +15,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.TPtrace.model.User;
 import com.example.TPtrace.service.UserService;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 @Controller
 public class UserController {
+	private static Logger loggerWithJsonLayout = LogManager.getLogger(UserController.class.getName());
 	
 	@Autowired
 	UserService service;
@@ -45,6 +49,7 @@ public class UserController {
 		System.out.println("Selected user id: "+selectedUser);
 		User user = service.fetchUserById(selectedUser);
 		session.setAttribute("selectedUser", user);
+		loggerWithJsonLayout.info("Login user: "+user);
 		return "redirect:/productPage";
 	}
 	
