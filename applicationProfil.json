@@ -1,0 +1,77 @@
+{
+  "Read": [
+    {
+      "password": "alex",
+      "operation_time": [
+        "2022-12-25",
+        "2022-12-25",
+        "2022-12-25",
+        "2022-12-25"
+      ],
+      "user_id": "12341",
+      "name": "Alex",
+      "age": "20",
+      "email": "alex@test.com"
+    },
+    {
+      "password": "john",
+      "operation_time": [
+        "2022-12-25",
+        "2022-12-25"
+      ],
+      "user_id": "12342",
+      "name": "John",
+      "age": "25",
+      "email": "john@test.com"
+    },
+    {
+      "password": "sara",
+      "operation_time": [
+        "2022-12-25",
+        "2022-12-25",
+        "2022-12-25"
+      ],
+      "user_id": "12344",
+      "name": "Sara",
+      "age": "40",
+      "email": "sara@test.com"
+    }
+  ],
+  "Write": [
+    {
+      "password": "john",
+      "operation_time": [
+        "2022-12-25",
+        "2022-12-25"
+      ],
+      "user_id": "12342",
+      "name": "John",
+      "age": "25",
+      "email": "john@test.com"
+    }
+  ],
+  "Read most expensive": [
+    {
+      "password": "david",
+      "operation_time": [
+        "2022-12-25",
+        "2022-12-25",
+        "2022-12-25"
+      ],
+      "user_id": "12343",
+      "name": "David",
+      "age": "33",
+      "email": "david@test.com"
+    },
+    {
+      "password": "sara",
+      "operation_time": [
+        "2022-12-25"
+      ],
+      "user_id": "12344",
+      "name": "Sara",
+      "age": "40",
+      "email": "sara@test.com"
+    }
+  ]
+}
