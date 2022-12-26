@@ -29,7 +29,7 @@ import com.example.TPtrace.service.ProductService;
 //@RestController
 @Controller
 public class ProductController {
-	private static Logger loggerWithJsonLayout = LogManager.getLogger(UserController.class.getName());
+	private static Logger loggerWithJsonLayout = LogManager.getLogger(ProductController.class.getName());
 	
 	@Autowired
 	ProductService service;
@@ -60,8 +60,9 @@ public class ProductController {
 	}
 	
 	@PostMapping("/createProduct")
-	public String createProduct(@ModelAttribute Product product) {
+	public String createProduct(@ModelAttribute Product product, HttpSession session) {
 		service.saveProduct(product);
+		loggerWithJsonLayout.info("Write action (create) by: "+session.getAttribute("selectedUser"));
 		return "productForm";
 	}
 	
@@ -70,7 +71,11 @@ public class ProductController {
 		System.out.println("Selected product id: "+selectedProduct);
 		Product product = service.fetchProductById(selectedProduct);
 		model.addAttribute("selectedProduct", product);
-		loggerWithJsonLayout.info("Read action: "+session.getAttribute("selectedUser"));
+		if (product.getProduct_id().equals("00004")) {
+			loggerWithJsonLayout.info("Read most expensive object by: "+session.getAttribute("selectedUser"));
+		} else {
+			loggerWithJsonLayout.info("Read action by: "+session.getAttribute("selectedUser"));
+		}
 		return "userProduct";
 	}
 	
@@ -79,6 +84,7 @@ public class ProductController {
 		service.deleteProductById(id);
 		List<Product> products = service.fetchProductList();
 		session.setAttribute("products", products);
+		loggerWithJsonLayout.info("Write action (delete) by: "+session.getAttribute("selectedUser"));
 		return "userProduct";
 	}
 	
@@ -90,8 +96,9 @@ public class ProductController {
 	}
 	
 	@PostMapping("/updateProduct")
-	public String updateProduct(@ModelAttribute Product selectedProduct) {
+	public String updateProduct(@ModelAttribute Product selectedProduct, HttpSession session) {
 		service.updateProduct(selectedProduct);
+		loggerWithJsonLayout.info("Write action (update) by: "+session.getAttribute("selectedUser"));
 		return "userProduct";
 	}
 
